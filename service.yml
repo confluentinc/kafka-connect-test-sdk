@@ -7,3 +7,7 @@ github:
   enable: true
 codeowners:
   enable: true
+semaphore:
+  enable: true
+  pipeline_type: cp
+  cve_scan: true
