@@ -1,6 +1,6 @@
 name: kafka-connect-test-sdk
-lang: unknown
-lang_version: unknown
+lang: java
+lang_version: 8
 git:
   enable: true
 github:

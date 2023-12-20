@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <BugInstance id="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" />
+    <Match>
+        <Class name="io.confluent.connect.test.sdk.upgrade.runner.UpgradeTestRunnerIT" />
+        <Method name="runUpgradeTest" />
+        <Or>
+            <Field name="numOfRecords" />
+            <Field name="startId" />
+            <Field name="connectorIT" />
+            <Field name="connect" />
+        </Or>
+    </Match>
+</FindBugsFilter>
