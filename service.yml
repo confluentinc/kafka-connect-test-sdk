@@ -5,9 +5,14 @@ git:
   enable: true
 github:
   enable: true
+  repo_name: confluentinc/kafka-connect-test-sdk
 codeowners:
   enable: true
 semaphore:
   enable: true
-  pipeline_type: cp
-  cve_scan: true
+  pipeline_enable: false
+  triggers:
+  - branches
+  - pull_requests
+  branches:
+  - master
