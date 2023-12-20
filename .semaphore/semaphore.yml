@@ -14,5 +14,4 @@ blocks:
       jobs:
         - name: Build, Test
           commands:
-            - make build
-            - make test
+            - mvn clean install
