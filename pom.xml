@@ -68,7 +68,6 @@
     to verify that the two transitive jetty dependencies can coexist (this is a concern
     for integration tests only. packaging builds are not affected by this problem) -->
     <cometd.version>4.0.9</cometd.version>
-    <jetty.version>9.4.47.v20220610</jetty.version>
   </properties>
 
   <dependencies>
@@ -90,51 +89,17 @@
       <groupId>org.apache.kafka</groupId>
       <artifactId>connect-runtime</artifactId>
       <version>${kafka.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.eclipse.jetty</groupId>
-          <artifactId>jetty-client</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>jakarta.activation</groupId>
-          <artifactId>jakarta.activation-api</artifactId>
-        </exclusion>
-      </exclusions>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.kafka</groupId>
       <version>${kafka.version}</version>
       <artifactId>connect-runtime</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.eclipse.jetty</groupId>
-          <artifactId>jetty-client</artifactId>
-        </exclusion>
-      </exclusions>
       <classifier>test</classifier>
       <type>test-jar</type>
       <scope>compile</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-server</artifactId>
-      <version>${jetty.version}</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-servlet</artifactId>
-      <version>${jetty.version}</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-servlets</artifactId>
-      <version>${jetty.version}</version>
-      <scope>compile</scope>
-    </dependency>
     <dependency>
       <groupId>io.confluent</groupId>
       <artifactId>common-utils</artifactId>
@@ -145,6 +110,11 @@
       <artifactId>avro</artifactId>
       <version>1.11.1</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -183,12 +153,6 @@
       <version>${confluent.version.range}</version>
       <type>test-jar</type>
       <scope>compile</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>jakarta.activation</groupId>
-          <artifactId>jakarta.activation-api</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
   </dependencies>
 
