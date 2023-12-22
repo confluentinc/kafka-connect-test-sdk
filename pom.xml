@@ -90,6 +90,12 @@
       <artifactId>connect-runtime</artifactId>
       <version>${kafka.version}</version>
       <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>jakarta.activation</groupId>
+          <artifactId>jakarta.activation-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.kafka</groupId>
@@ -153,6 +159,12 @@
       <version>${confluent.version.range}</version>
       <type>test-jar</type>
       <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>jakarta.activation</groupId>
+          <artifactId>jakarta.activation-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
 
