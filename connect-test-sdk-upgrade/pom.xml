@@ -28,24 +28,9 @@
     <confluent.hub.version>7.4.0</confluent.hub.version>
     <kafka.scala.version>2.13</kafka.scala.version>
     <skipIntegrationTests>false</skipIntegrationTests>
-
-    <test.containers.version>1.16.3</test.containers.version>
-    <es.version>7.17.3</es.version>
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>com.google.auto.service</groupId>
-      <artifactId>auto-service</artifactId>
-      <version>1.1.1</version>
-    </dependency>
-    <dependency>
-      <groupId>com.squareup</groupId>
-      <artifactId>javapoet</artifactId>
-      <version>1.13.0</version>
-    </dependency>
-
-    <!-- Dependencies Common !-->
     <dependency>
       <groupId>io.confluent</groupId>
       <artifactId>connect-test-sdk-common</artifactId>
@@ -55,35 +40,22 @@
       <groupId>io.confluent</groupId>
       <artifactId>confluent-hub-client</artifactId>
       <version>${confluent.hub.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>compile</scope>
+      <!--Duplicate artifacts from connect-runtime-->
+      <exclusions>
+        <exclusion>
+          <groupId>org.glassfish.jersey.core</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.glassfish.jersey.inject</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.reflections</groupId>
       <artifactId>reflections</artifactId>
       <version>0.9.12</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka_${kafka.scala.version}</artifactId>
-      <version>${kafka.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka_${kafka.scala.version}</artifactId>
-      <type>test-jar</type>
-      <classifier>test</classifier>
-      <version>${kafka.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
@@ -92,5 +64,4 @@
       <scope>compile</scope>
     </dependency>
   </dependencies>
-
 </project>
