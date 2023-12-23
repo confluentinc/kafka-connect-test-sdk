@@ -70,6 +70,16 @@
     <cometd.version>4.0.9</cometd.version>
   </properties>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.confluent</groupId>
+        <artifactId>connect-test-sdk-common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.kafka</groupId>
