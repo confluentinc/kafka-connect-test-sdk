@@ -68,6 +68,7 @@
     to verify that the two transitive jetty dependencies can coexist (this is a concern
     for integration tests only. packaging builds are not affected by this problem) -->
     <cometd.version>4.0.9</cometd.version>
+    <connect.test.sdk.common.version>0.1.0-SNAPSHOT</connect.test.sdk.common.version>
   </properties>
 
   <dependencyManagement>
@@ -75,7 +76,7 @@
       <dependency>
         <groupId>io.confluent</groupId>
         <artifactId>connect-test-sdk-common</artifactId>
-        <version>${project.version}</version>
+        <version>${connect.test.sdk.common.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
