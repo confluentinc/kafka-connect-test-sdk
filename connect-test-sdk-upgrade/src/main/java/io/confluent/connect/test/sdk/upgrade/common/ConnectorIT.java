@@ -26,6 +26,7 @@ public abstract class ConnectorIT {
   /**
    * This method is used to get the connector configs in form of upgrade configs.
    * @return List of UpgradeConfig
+   * @throws Exception Exception thrown if fails to get configs.
    */
   public abstract List<UpgradeConfig> getConnectorConfigs() throws Exception;
 
@@ -35,6 +36,7 @@ public abstract class ConnectorIT {
    * For Sink IT test, publish data to the topic using the EmbeddedConnectCluster.
    * @param connect EmbeddedConnectCluster to push data to kafka topic.
    * @param uniqueId Unique Identifier to start generating data from and till NUM_OF_RECORDS.
+   * @throws Exception Exception thrown if publishing data fails.
    */
   public abstract void publishData(EmbeddedConnectCluster connect, int uniqueId) throws Exception;
 
