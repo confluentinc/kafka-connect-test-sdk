@@ -23,7 +23,6 @@
         <dependency>
             <groupId>io.confluent</groupId>
             <artifactId>connect-test-sdk-common</artifactId>
-            <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
