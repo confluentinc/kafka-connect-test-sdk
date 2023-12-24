@@ -68,7 +68,7 @@
     to verify that the two transitive jetty dependencies can coexist (this is a concern
     for integration tests only. packaging builds are not affected by this problem) -->
     <cometd.version>4.0.9</cometd.version>
-    <connect.test.sdk.common.version>0.1.0-SNAPSHOT</connect.test.sdk.common.version>
+    <connect.test.sdk.common.version>0.2.0-SNAPSHOT</connect.test.sdk.common.version>
   </properties>
 
   <dependencyManagement>
@@ -271,4 +271,20 @@
     <module>connect-test-sdk-dataloss</module>
     <module>connect-test-sdk-upgrade</module>
   </modules>
+
+  <distributionManagement>
+    <repository>
+      <id>aws-release</id>
+      <name>AWS Release Repository</name>
+      <!-- defined as needed -->
+      <url>${confluent.release.repo}</url>
+    </repository>
+    <snapshotRepository>
+      <id>aws-snapshot</id>
+      <name>AWS Snapshot Repository</name>
+      <!-- defined as needed -->
+      <url>${confluent.snapshot.repo}</url>
+    </snapshotRepository>
+  </distributionManagement>
+
 </project>
