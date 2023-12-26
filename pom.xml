@@ -14,7 +14,7 @@
   <artifactId>kafka-connect-test-sdk-parent</artifactId>
   <packaging>pom</packaging>
   <name>kafka-connect-test-sdk-parent</name>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.1.1</version>
   <description>Contains Common Test functionality for Connect.</description>
   <url>https://github.com/confluentinc/kafka-connect-test-sdk</url>
   <inceptionYear>2023</inceptionYear>
@@ -35,7 +35,7 @@
     <connection>scm:git:https://github.com/confluentinc/kafka-connect-test-sdk.git</connection>
     <developerConnection>scm:git:git@github.com:confluentinc/kafka-connect-test-sdk.git</developerConnection>
     <url>https://github.com/confluentinc/kafka-connect-test-sdk</url>
-    <tag>0.1.x</tag>
+    <tag>v0.1.1</tag>
   </scm>
 
   <repositories>
@@ -68,7 +68,7 @@
     to verify that the two transitive jetty dependencies can coexist (this is a concern
     for integration tests only. packaging builds are not affected by this problem) -->
     <cometd.version>4.0.9</cometd.version>
-    <connect.test.sdk.common.version>0.1.1-SNAPSHOT</connect.test.sdk.common.version>
+    <connect.test.sdk.common.version>0.1.1</connect.test.sdk.common.version>
   </properties>
 
   <dependencyManagement>
