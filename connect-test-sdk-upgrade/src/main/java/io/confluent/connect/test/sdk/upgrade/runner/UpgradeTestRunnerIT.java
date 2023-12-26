@@ -178,7 +178,7 @@ public class UpgradeTestRunnerIT {
 
     if (connectorITs.isEmpty()) {
       String exceptionMsg = String.format("Skipping Tests. Found 0 integration test class "
-          + "annotated with {} class and plugin {}", TestPlugin.class.getSimpleName(), pluginName);
+          + "annotated with %s class and plugin %s", TestPlugin.class.getSimpleName(), pluginName);
       throw new IllegalArgumentException(exceptionMsg);
     }
 
