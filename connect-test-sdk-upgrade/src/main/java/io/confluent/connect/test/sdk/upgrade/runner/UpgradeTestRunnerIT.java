@@ -30,6 +30,8 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.reflections.Reflections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.io.File;
@@ -57,6 +59,7 @@ public class UpgradeTestRunnerIT {
   private static Map<String, String> localInstalledPlugins = new HashMap<>();
   private boolean isFirstTest;
   private boolean isLastTest;
+  private static final Logger log = LoggerFactory.getLogger(UpgradeTestRunnerIT.class);
 
   public UpgradeTestRunnerIT(String version, boolean isFirstTest, boolean isLastTest,
                              Class<? extends ConnectorIT> connectorITClass) {
@@ -90,7 +93,7 @@ public class UpgradeTestRunnerIT {
         + ":" + version.toString(), destination, localInstalledPlugins);
 
     if (isFirstTest) {
-      connect = ConnectorUtils.startConnectCluster("cc-integration-test", pluginPath);
+      connect = ConnectorUtils.startConnectCluster("integration-tests", pluginPath);
       ConnectorIT.class.getDeclaredMethod("setup", EmbeddedConnectCluster.class)
           .invoke(connectorIT, connect);
     } else {
@@ -152,9 +155,14 @@ public class UpgradeTestRunnerIT {
 
   @Parameterized.Parameters(name = "{index}:{0}:{3}")
   public static Collection<Object[]> data() throws Exception {
-    String pluginName = EnvVariablesEnum.PLUGIN_NAME.value;
-    String reflectionPath = EnvVariablesEnum.REFLECTIONS_PATH.value;
+    String pluginName = EnvVariablesEnum.PLUGIN_NAME.getValueFromEnv();
+    String reflectionPath = EnvVariablesEnum.REFLECTIONS_PATH.getValueFromEnv();
+    String clonedRepoPath = EnvVariablesEnum.CLONED_REPO_PATH.getValueFromEnv();
 
+    if (pluginName.isEmpty() || clonedRepoPath.isEmpty()) {
+      log.warn("Skipping Tests. Either PLUGIN_NAME or CLONED_REPO_PATH is empty.");
+      return new ArrayList<>();
+    }
     List<Class<? extends ConnectorIT>> connectorITs = new ArrayList<>();
     Reflections reflections = new Reflections(reflectionPath);
     Set<Class<? extends ConnectorIT>> classes = reflections.getSubTypesOf(ConnectorIT.class);
@@ -163,18 +171,18 @@ public class UpgradeTestRunnerIT {
       if (testPlugins.length > 0 && testPlugins[0].pluginName().equals(pluginName)) {
         pluginInfo = new PluginInfo(testPlugins[0].pluginName(),
             testPlugins[0].hubPath(), testPlugins[0].repoPath());
+        log.info("Found Integration tests : " + clazz.getSimpleName());
         connectorITs.add(clazz);
       }
     }
 
     if (connectorITs.isEmpty()) {
+      log.warn("Skipping Tests. Found 0 integration test class annotated with {} class and"
+          + " plugin {}", TestPlugin.class.getSimpleName(), pluginName);
       return new ArrayList<>();
     }
 
     upgradeTestHelper = new UpgradeTestHelper(pluginInfo);
-
-    String clonedRepoPath = EnvVariablesEnum.CLONED_REPO_PATH.value;
-
     List<Version> versionList = upgradeTestHelper.getAllTags(new File(clonedRepoPath));
     String projectVersion = upgradeTestHelper.getProjectVersion(new File(clonedRepoPath));
     Version latestTag = upgradeTestHelper.getLatestTag(versionList, projectVersion);
@@ -187,6 +195,8 @@ public class UpgradeTestRunnerIT {
     List<Object[]> params = new ArrayList<>();
     for (Class<? extends ConnectorIT> clazz : connectorITs) {
       // pass parameters acc. to constructor (version, firstTest, LastTest, ConnectorITClass)
+      log.info("{} will run for versions {} and {}", clazz.getSimpleName(),
+          latestTag.toString(), projectVersion);
       params.add(new Object[]{latestTag.toString(), true, false, clazz});
       params.add(new Object[]{projectVersion, false, true, clazz});
     }
