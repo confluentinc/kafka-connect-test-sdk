@@ -160,7 +160,7 @@ public class UpgradeTestRunnerIT {
     String clonedRepoPath = EnvVariablesEnum.CLONED_REPO_PATH.getValueFromEnv();
 
     if (pluginName.isEmpty() || clonedRepoPath.isEmpty()) {
-      log.info("Skipping Tests. Either PLUGIN_NAME or CLONED_REPO_PATH is empty.");
+      log.warn("Skipping Tests. Either PLUGIN_NAME or CLONED_REPO_PATH is empty.");
       return new ArrayList<>();
     }
     List<Class<? extends ConnectorIT>> connectorITs = new ArrayList<>();
@@ -177,8 +177,8 @@ public class UpgradeTestRunnerIT {
     }
 
     if (connectorITs.isEmpty()) {
-      log.info("Skipping Tests. Found 0 integration test class annotated with {} class and plugin {}",
-          TestPlugin.class.getSimpleName(), pluginName);
+      log.warn("Skipping Tests. Found 0 integration test class annotated with {} class and"
+          + " plugin {}", TestPlugin.class.getSimpleName(), pluginName);
       return new ArrayList<>();
     }
 
