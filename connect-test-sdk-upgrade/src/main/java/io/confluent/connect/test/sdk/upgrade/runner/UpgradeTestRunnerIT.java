@@ -177,8 +177,8 @@ public class UpgradeTestRunnerIT {
     }
 
     if (connectorITs.isEmpty()) {
-      log.info("Skipping Tests. Found 0 integration test class annotated with {} class",
-          TestPlugin.class.getSimpleName());
+      log.info("Skipping Tests. Found 0 integration test class annotated with {} class and plugin {}",
+          TestPlugin.class.getSimpleName(), pluginName);
       return new ArrayList<>();
     }
 
