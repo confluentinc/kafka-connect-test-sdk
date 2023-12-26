@@ -5,20 +5,24 @@
 package io.confluent.connect.test.sdk.upgrade.util;
 
 public enum EnvVariablesEnum {
-  VERSIONS_TO_RUN("VERSIONS_TO_RUN"),
-  BRANCH_TO_TEST("BRANCH_TO_TEST"),
-  PLUGIN_NAME("PLUGIN_NAME"),
-  REFLECTIONS_PATH("REFLECTIONS_PATH"),
-  CLONED_REPO_PATH("CLONED_REPO_PATH");
+  PLUGIN_NAME("PLUGIN_NAME",""),
+  REFLECTIONS_PATH("REFLECTIONS_PATH", "io.confluent"),
+  CLONED_REPO_PATH("CLONED_REPO_PATH", "");
 
-  public final String value;
+  public final String envVar;
+  public final String defaultValue;
 
-  EnvVariablesEnum(String value) {
-    String tmpValue = System.getenv(value);
-    if (value.equals("REFLECTIONS_PATH") && tmpValue.isEmpty()) {
-      tmpValue = "io.confluent";
+  EnvVariablesEnum(String envVar, String defaultValue) {
+    this.envVar = envVar;
+    this.defaultValue = defaultValue;
+  }
+
+  public String getValueFromEnv() {
+    String tmpValue = System.getenv(this.envVar);
+    if (tmpValue == null || tmpValue.isEmpty()) {
+      tmpValue = this.defaultValue;
     }
-    this.value = tmpValue;
+    return tmpValue;
   }
 
   public static String getLocalPluginPathVariable(String pluginName) {
