@@ -16,3 +16,6 @@ semaphore:
   - pull_requests
   branches:
   - master
+  - main
+  - /^\d+\.\d+\.x$/
+  - /^gh-readonly-queue.*/
