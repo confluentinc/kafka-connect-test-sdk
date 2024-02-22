@@ -9,7 +9,6 @@ spec:
     url: git@github.com:confluentinc/kafka-connect-test-sdk.git
     run_on:
     - branches
-    - tags
     - pull_requests
     pipeline_file: .semaphore/semaphore.yml
     integration_type: github_app
@@ -20,7 +19,9 @@ spec:
     whitelist:
       branches:
       - master
-      - kafka-connect-test-sdk
+      - main
+      - /^\d+\.\d+\.x$/
+      - /^gh-readonly-queue.*/
   custom_permissions: true
   debug_permissions:
   - empty
@@ -35,3 +36,4 @@ spec:
   - pull_request
   - forked_pull_request
   - tag
+  
