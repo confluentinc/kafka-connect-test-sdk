@@ -14,7 +14,7 @@
   <artifactId>kafka-connect-test-sdk-parent</artifactId>
   <packaging>pom</packaging>
   <name>kafka-connect-test-sdk-parent</name>
-  <version>0.2.0-SNAPSHOT</version>
+  <version>0.2.1-SNAPSHOT</version>
   <description>Contains Common Test functionality for Connect.</description>
   <url>https://github.com/confluentinc/kafka-connect-test-sdk</url>
   <inceptionYear>2023</inceptionYear>
@@ -46,6 +46,13 @@
     </repository>
   </repositories>
 
+  <pluginRepositories>
+    <pluginRepository>
+      <id>confluent</id>
+      <url>https://packages.confluent.io/maven/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
   <licenses>
     <license>
       <name>Confluent Community License</name>
@@ -68,7 +75,7 @@
     to verify that the two transitive jetty dependencies can coexist (this is a concern
     for integration tests only. packaging builds are not affected by this problem) -->
     <cometd.version>4.0.9</cometd.version>
-    <connect.test.sdk.common.version>0.2.0-SNAPSHOT</connect.test.sdk.common.version>
+    <connect.test.sdk.common.version>0.2.1-SNAPSHOT</connect.test.sdk.common.version>
   </properties>
 
   <dependencyManagement>
@@ -259,9 +266,9 @@
     </plugins>
     <extensions>
       <extension>
-        <groupId>org.springframework.build</groupId>
+        <groupId>io.confluent</groupId>
         <artifactId>aws-maven</artifactId>
-        <version>5.0.0.RELEASE</version>
+        <version>1.0.0</version>
       </extension>
     </extensions>
   </build>
