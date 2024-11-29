@@ -76,6 +76,7 @@
     for integration tests only. packaging builds are not affected by this problem) -->
     <cometd.version>4.0.9</cometd.version>
     <connect.test.sdk.common.version>0.2.0-SNAPSHOT</connect.test.sdk.common.version>
+    <dependency.check.skip>true</dependency.check.skip>
   </properties>
 
   <dependencyManagement>
