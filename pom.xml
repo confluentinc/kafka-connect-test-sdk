@@ -260,9 +260,9 @@
     </plugins>
     <extensions>
       <extension>
-        <groupId>org.springframework.build</groupId>
+        <groupId>io.confluent.flink</groupId>
         <artifactId>aws-maven</artifactId>
-        <version>5.0.0.RELEASE</version>
+        <version>5.0.1.INTERNAL</version>
       </extension>
     </extensions>
   </build>
