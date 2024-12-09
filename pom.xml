@@ -46,13 +46,6 @@
     </repository>
   </repositories>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>confluent</id>
-      <url>https://packages.confluent.io/maven/</url>
-    </pluginRepository>
-  </pluginRepositories>
-
   <licenses>
     <license>
       <name>Confluent Community License</name>
@@ -267,9 +260,9 @@
     </plugins>
     <extensions>
       <extension>
-        <groupId>io.confluent</groupId>
+        <groupId>org.springframework.build</groupId>
         <artifactId>aws-maven</artifactId>
-        <version>1.0.0</version>
+        <version>5.0.0.RELEASE</version>
       </extension>
     </extensions>
   </build>
