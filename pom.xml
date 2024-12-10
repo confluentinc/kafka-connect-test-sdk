@@ -82,6 +82,15 @@
     </dependencies>
   </dependencyManagement>
 
+  <pluginRepositories>
+    <pluginRepository>
+      <id>yle-public</id>
+      <name>Yle public repository</name>
+      <url>https://maven.yle.fi/release</url>
+      <layout>default</layout>
+    </pluginRepository>
+  </pluginRepositories>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.kafka</groupId>
@@ -260,9 +269,9 @@
     </plugins>
     <extensions>
       <extension>
-        <groupId>io.confluent.flink</groupId>
+        <groupId>fi.yle.tools</groupId>
         <artifactId>aws-maven</artifactId>
-        <version>5.0.1.INTERNAL</version>
+        <version>1.4.1</version>
       </extension>
     </extensions>
   </build>
