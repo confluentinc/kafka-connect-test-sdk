@@ -9,7 +9,7 @@
     <parent>
         <groupId>io.confluent</groupId>
         <artifactId>kafka-connect-test-sdk-parent</artifactId>
-        <version>0.1.36-SNAPSHOT</version>
+        <version>0.1.36</version>
     </parent>
 
     <artifactId>connect-test-sdk-common</artifactId>
