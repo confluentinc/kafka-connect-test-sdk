@@ -82,15 +82,6 @@
     </dependencies>
   </dependencyManagement>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>yle-public</id>
-      <name>Yle public repository</name>
-      <url>https://maven.yle.fi/release</url>
-      <layout>default</layout>
-    </pluginRepository>
-  </pluginRepositories>
-
   <dependencies>
     <dependency>
       <groupId>org.apache.kafka</groupId>
@@ -269,9 +260,9 @@
     </plugins>
     <extensions>
       <extension>
-        <groupId>com.github.seahen</groupId>
-        <artifactId>maven-s3-wagon</artifactId>
-        <version>1.3.3</version>
+        <groupId>org.springframework.build</groupId>
+        <artifactId>aws-maven</artifactId>
+        <version>5.0.0.RELEASE</version>
       </extension>
     </extensions>
   </build>
