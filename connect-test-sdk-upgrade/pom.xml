@@ -23,7 +23,7 @@
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <confluent.hub.version>7.4.0</confluent.hub.version>
+    <confluent.hub.version>8.0.0-133</confluent.hub.version>
     <kafka.scala.version>2.13</kafka.scala.version>
     <skipIntegrationTests>false</skipIntegrationTests>
   </properties>
