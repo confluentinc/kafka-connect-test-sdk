@@ -23,7 +23,7 @@
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <confluent.hub.version>7.4.0</confluent.hub.version>
+    <confluent.hub.version>7.9.0-661</confluent.hub.version>
     <kafka.scala.version>2.13</kafka.scala.version>
     <skipIntegrationTests>false</skipIntegrationTests>
   </properties>
@@ -52,12 +52,12 @@
     <dependency>
       <groupId>org.reflections</groupId>
       <artifactId>reflections</artifactId>
-      <version>0.9.12</version>
+      <version>0.10.2</version>
     </dependency>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
-      <version>2.17.1</version>
+      <version>2.24.3</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
